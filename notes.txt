@@ -1,0 +1,24 @@
+programming
+- all
+
+
+paper
+ - Intro
+ - Description of Project
+ - Objectives
+ - Significance of Study
+ - Scope and Delimitation
+ - Screen Output
+ - Source Code
+ - Pseudocode
+ - Flowchart
+ - Conclusion
+presentation
+
+
+
+Ticket Kiosk
+   - SM tickets replica
+   - Concert
+   - Movies
+   - Theatre

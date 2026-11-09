@@ -1,0 +1,109 @@
+========================================
+         TICKETMACHINE CLI
+========================================
+         Ticket Kiosk Simulator
+========================================
+
+[1] View Available Ticket Categories
+[2] Book Tickets
+[3] Search Booking
+[4] View Booking History
+[5] Daily Sales Report
+[0] Exit
+
+Select Option: 1-5 / 0
+
+#-------------------------------------------------------------------------------------#
+
+# BOOKING FLOW
+
+========================================
+             BOOK TICKETS
+========================================
+
+Select Ticket Category:
+[1] Concert
+[2] Movies
+[3] Theatre
+[4] Sport Venues
+[5] Attractions
+
+Enter Choice: 2
+
+# Event Selection
+
+========================================
+             MOVIE LIST
+========================================
+
+[1] Final Hour           PHP 300.00
+[2] The Last Signal      PHP 280.00
+[3] Campus Haunt         PHP 250.00
+
+Select Movie: 1
+
+# Customer Details (parang checkout)
+
+========================================
+          CUSTOMER INFORMATION
+========================================
+
+Enter Customer Name: Charles Marcelo
+Enter Age: 18
+
+Are you a student, senior citizen, or PWD? (Enter the corresponding number)?:
+[1] Student
+[2] Senior Citizen  
+[3] PWD
+[4] None
+
+Enter Choice: 1
+
+Enter Number of Tickets: 2
+
+# Compuation 
+========================================
+         TICKET COMPUTATION
+========================================
+
+Selected Show: Final Hour
+Ticket Type: Movie
+Ticket Price: PHP 300.00
+Quantity: 2
+
+Subtotal: PHP 600.00
+Discount: 10%
+Discount Amount: PHP 60.00
+Vat Amount: PHP 64.80
+
+TOTAL AMOUNT: PHP 540.00
+
+#-------------------------------------------------------------------------------------#
+
+# Recipt Generation Or output
+
+========================================
+            PURCHASE RECEIPT
+========================================
+
+Booking ID: TM1000 # Adding numbers per order/booking +1 on each order
+Customer Name: Charles Marcelo
+Customer Type: Student
+
+========================================
+Ticket Category: Movie
+Selected Show: Final Hour
+Ticket Price: PHP 300.00
+Quantity: 2
+
+Subtotal: PHP 600.00
+
+Vat Amount: PHP 64.80
+Discount Amount: PHP 60.00
+========================================
+Total Amount: PHP 540.00
+
+Booking Status: CONFIRMED
+
+Thank you for using Ticket Machine!
+========================================
