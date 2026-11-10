@@ -1,0 +1,91 @@
+1. PROGRAM PURPOSE
+   This program is a ticket kiosk operated through a text menu. Users can
+   view ticket categories, book tickets, receive a receipt, and check sales.
+
+2. LIBRARIES AND PROGRAM SETUP
+   - iostream: Displays messages and reads user input.
+   - string: Stores text, including customer names and show titles.
+   - iomanip: Formats prices to two decimal places and aligns the show list.
+   - limits: Helps discard invalid input before reading another choice.
+   - main(): Contains the program's instructions.
+   - Constants set the sizes: 5 categories, 3 shows per category, and
+     4 customer types.
+
+3. ARRAYS: ORGANIZING RELATED INFORMATION
+   - The categories array stores Concert, Movies, Theatre, Sport Venues,
+     and Attractions.
+   - The shows array is a two-dimensional list containing 15 shows.
+     Each row represents a category, and each column represents a show.
+   - The prices array stores the matching ticket prices in the same
+     row and column positions as the shows.
+   - The customerTypes, discountRates, and discountNames arrays store
+     customer types and their matching discounts.
+   - Array positions start at zero. The program subtracts one from a
+     menu choice to find the correct array position.
+
+4. VARIABLES: TRACKING BOOKINGS AND SALES
+   - Booking variables hold the customer's name, age, choices, and quantity.
+   - Sales counters track transactions, tickets sold, and total revenue.
+   - The booking number starts at 1000, producing the first ID, TM1000.
+   - The running variable controls whether the program keeps operating.
+
+5. MAIN MENU
+   - Option 1: View available ticket categories.
+   - Option 2: Book tickets.
+   - Option 3: Display the daily sales report.
+   - Option 0: Exit the program.
+
+6. IF-ELSE STATEMENTS: MAKING DECISIONS
+   - If and else-if statements select the action for each menu option.
+   - Other if-else statements check whether entered values are acceptable.
+   - The final else displays a message when a menu option is invalid.
+
+7. LOOPS: REPEATING ACTIONS
+   - A while loop keeps displaying the menu while the program is running.
+   - For loops display categories, shows with prices, and customer types
+     by reading their arrays.
+   - Continue returns to the main menu after an invalid entry.
+   - Break ends the main loop when input ends or cannot be read for a name.
+
+8. TICKET BOOKING AND CUSTOMER INFORMATION
+   - The user selects a category and a show or event.
+   - The program retrieves the selected title and price from the arrays.
+   - The user enters a full name, age, customer type, and ticket quantity.
+   - The discount depends on the selected customer type. Age is collected
+     and checked, but it does not automatically determine the discount.
+
+9. INPUT CHECKS
+   - Checks for failed numeric input and choices outside the allowed range.
+   - Rejects negative ages and ticket quantities of zero or less.
+   - Clears invalid input and returns to the main menu without recording
+     an incomplete booking.
+   - Ends the program when the input stream reaches its end.
+
+10. DISCOUNTS AND PRICE COMPUTATION
+    Discounts programmed in the customer arrays:
+    - Student: 10%
+    - Senior Citizen: 15%
+    - PWD (Person with Disability): 10%
+    - None: 0%
+
+    Computation steps:
+    - Subtotal = Ticket price multiplied by ticket quantity.
+    - Discount amount = Subtotal multiplied by the discount rate.
+    - Total amount = Subtotal minus the discount amount.
+    - VAT amount = Total amount multiplied by 12%.
+
+    In this code, VAT is displayed separately and is not added to the total.
+
+11. PURCHASE RECEIPT AND SALES UPDATE
+    - Displays the booking ID, customer name and type, category, show,
+      ticket price, quantity, subtotal, VAT, discount, and total amount.
+    - Marks the booking as CONFIRMED.
+    - Adds one transaction, adds the purchased tickets, and adds the total
+      amount to revenue.
+    - Increases the booking number for the next customer.
+
+12. DAILY SALES REPORT AND PROGRAM EXIT
+    - The report displays total transactions, tickets sold, and revenue
+      recorded during the current program session.
+    - Choosing Exit displays a goodbye message and stops the menu loop.
+    - The program then ends.
