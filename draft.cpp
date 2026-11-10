@@ -19,7 +19,7 @@ int main() {
         cout << "\n========================================\n";
         cout << "         TICKETMACHINE CLI\n";
         cout << "========================================\n";
-        cout << "         Ticket Kiosk Simulator\n";
+        cout << "         Ticket Kiosk \n";
         cout << "========================================\n\n";
         cout << "[1] View Available Ticket Categories\n";
         cout << "[2] Book Tickets\n";
