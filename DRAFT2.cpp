@@ -10,12 +10,10 @@ int main() {
     const int SHOW_COUNT = 3;
     const int CUSTOMER_TYPE_COUNT = 4;
 
-    // One-dimensional array: available ticket categories.
     const string categories[CATEGORY_COUNT] = {
         "Concert", "Movies", "Theatre", "Sport Venues", "Attractions"
     };
 
-    // Each row belongs to a category; each column is one show.
     const string shows[CATEGORY_COUNT][SHOW_COUNT] = {
         {"Eraserheads Reunion", "SB19 Pagtatag Finale", "Ben&Ben Acoustic Night"},
         {"Final Hour", "The Last Signal", "Campus Haunt"},
@@ -24,7 +22,6 @@ int main() {
         {"Enchanted Kingdom", "Manila Ocean Park", "National Museum Tour"}
     };
 
-    // Prices use the same row and column positions as the shows.
     const double prices[CATEGORY_COUNT][SHOW_COUNT] = {
         {2500.00, 1800.00, 1500.00},
         {300.00, 280.00, 250.00},
@@ -33,7 +30,6 @@ int main() {
         {900.00, 700.00, 150.00}
     };
 
-    // Matching indexes connect each customer type to its discount.
     const string customerTypes[CUSTOMER_TYPE_COUNT] = {
         "Student", "Senior Citizen", "PWD", "None"
     };
@@ -115,7 +111,6 @@ int main() {
                 }
             }
 
-            // Menu choices start at 1, but array indexes start at 0.
             int categoryIndex = catChoice - 1;
 
             cout << "\n========================================\n";
@@ -200,7 +195,6 @@ int main() {
                 }
             }
 
-            // Keep the original program's discount and VAT calculations.
             double sub = price * qty;
             double discAmt = sub * discountRate;
             double total = sub - discAmt;
