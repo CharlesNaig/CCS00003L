@@ -19,7 +19,7 @@ int main() {
         cout << "\n========================================\n";
         cout << "         TICKETMACHINE CLI\n";
         cout << "========================================\n";
-        cout << "         Ticket Kiosk Simulator\n";
+        cout << "          Ticket Kiosk\n";
         cout << "========================================\n\n";
         cout << "[1] View Available Ticket Categories\n";
         cout << "[2] Book Tickets\n";
@@ -205,15 +205,15 @@ int main() {
                 cout << "Booking ID: " << bID << "\n";
                 cout << "Customer Name: " << cName << "\n";
                 cout << "Customer Type: " << cType << "\n\n";
-                cout << "========================================\n";
+                cout << "========================================\n\n";
                 cout << "Ticket Category: " << category << "\n";
                 cout << "Selected Show: " << show << "\n";
                 cout << "Ticket Price: PHP " << price << "\n";
                 cout << "Quantity: " << qty << "\n\n";
                 cout << "Subtotal: PHP " << sub << "\n\n";
                 cout << "Vat Amount: PHP " << vat << "\n";
-                cout << "Discount Amount: PHP " << discAmt << "\n";
-                cout << "========================================\n";
+                cout << "Discount Amount: PHP " << discAmt << "\n\n";
+                cout << "========================================\n\n";
                 cout << "Total Amount: PHP " << total << "\n\n";
                 cout << "Booking Status: CONFIRMED\n\n";
                 cout << "Thank you for using Ticket Machine!\n";
