@@ -16,6 +16,8 @@ g++ -std=c++17 -Wall -Wextra DRAFT2.cpp -o ticketmachine.exe
 
 Both C++ drafts define their own `main()`. Build one file at a time. Use `DRAFT2.cpp` to follow the walkthrough below.
 
+The CLI uses blue section headers, teal option numbers, amber input errors, and green confirmations on supported terminals. Redirected output stays plain text. Set NO_COLOR=1 to turn colors off.
+
 ## Main menu
 
 | Option | What it does |
@@ -25,6 +27,8 @@ Both C++ drafts define their own `main()`. Build one file at a time. Use `DRAFT2
 | `3` | Shows confirmed transactions, tickets sold, and total revenue in the current session. |
 | `0` | Exits the simulator. |
 
+Inside a menu, **0** goes back. View Categories lets you open an event list with prices and return to the category list. During booking, **0** returns from the category list to the main menu, from the event list to categories, and from the customer name or customer-type prompt to the event list. Age and quantity are data fields. Use **0** on the receipt or sales report to return to the main menu.
+
 ## Source code guide
 
 - [`draft.cpp`](draft.cpp) is the first working version. Its `main()` uses nested `switch` statements for the menus and stores event names and prices in the corresponding branches.
@@ -33,14 +37,14 @@ Both C++ drafts define their own `main()`. Build one file at a time. Use `DRAFT2
 | Block | How it works in `DRAFT2.cpp` |
 | --- | --- |
 | Catalog and discounts | `categories` contains the category labels. The two-dimensional `shows` and `prices` arrays share the same row and column positions. `customerTypes`, `discountRates`, and `discountNames` use matching indexes for student (10%), senior citizen (15%), PWD (10%), and regular (0%) bookings. |
-| Main menu | A `while` loop displays the menu. An `if`/`else if` chain handles the selected action. |
-| Booking input | The program validates category, event, customer type, age, and quantity before confirming a booking. It converts numbered selections to zero-based array indexes and uses `getline` to accept a customer name with spaces. Invalid booking input returns to the main menu. |
+| Main menu | A `while` loop displays the active `Screen`. The menu branches update that screen when the user selects an action or goes back. |
+| Booking input | The program validates category, event, customer type, age, and quantity before confirming a booking. It converts numbered selections to zero-based array indexes and uses `getline` to accept a customer name with spaces. `readNumber()` retries invalid numeric entries at the current prompt. |
 | Calculation and receipt | `sub = price * qty`, `discAmt = sub * discountRate`, and `total = sub - discAmt`. The simulator displays `vat = total * 0.12` separately. The receipt starts at booking ID `TM1000` and shows the event, customer type, quantity, and amount. |
 | Sales counters | After a receipt, the program increments the transaction count and booking ID, then adds the quantity and discounted amount to `totalTicketsSold` and `totalRevenue`. |
 
 ## Sample booking
 
-On a fresh run, choose **2 → 2 → 1** for Book Tickets → Movies → Final Hour. Enter `Sample Customer`, age `18`, customer type `1` (Student), and quantity `2`. Then choose **3** for the report and **0** to exit.
+On a fresh run, choose **2 → 2 → 1** for Book Tickets → Movies → Final Hour. Enter `Sample Customer`, age `18`, customer type `1` (Student), and quantity `2`. After the receipt, choose **0** to return to the main menu, **3** to open the report, **0** to return, and **0** again to exit.
 
 | Output | Expected result |
 | --- | --- |
