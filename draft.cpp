@@ -17,7 +17,7 @@ int main() {
 
     while (running) {
         cout << "\n========================================\n";
-        cout << "         TICKETMACHINE CLI\n";
+        cout << "         TICKET MACHINE CLI\n";
         cout << "========================================\n";
         cout << "           Ticket Kiosk\n";
         cout << "========================================\n\n";
@@ -33,7 +33,7 @@ int main() {
         switch (menuOption) {
             case 1:
                 cout << "\n========================================\n";
-                cout << "       AVAILABLE TICKET CATEGORIES\n";
+                cout << "       AVAILABLE TICKET CATEGORIE/S\n";
                 cout << "========================================\n";
                 cout << "[1] Concert\n[2] Movies\n[3] Theatre\n[4] Sport Venues\n[5] Attractions\n";
                 break;
