@@ -1,0 +1,42 @@
+{
+  ".vscode/c_cpp_properties.json": {
+    "mtime": 1794322723.1909983,
+    "ast_hash": "e4f4a36a2cd511c020b3713306827f1f",
+    "semantic_hash": ""
+  },
+  ".vscode/launch.json": {
+    "mtime": 1794322694.133716,
+    "ast_hash": "d730977f1ae7f1ed5fa1e1231fab7105",
+    "semantic_hash": ""
+  },
+  ".vscode/tasks.json": {
+    "mtime": 1794322723.1854465,
+    "ast_hash": "84f4447909376d9760bb24626bb56eef",
+    "semantic_hash": ""
+  },
+  "DRAFT2.cpp": {
+    "mtime": 1794322455.3723826,
+    "ast_hash": "ca8e4be3212c5a04710cfd058777ce76",
+    "semantic_hash": ""
+  },
+  "draft.cpp": {
+    "mtime": 1794322497.919246,
+    "ast_hash": "1a14235f54dfe668fe7511c26f087365",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794238761.3153882,
+    "ast_hash": "ab882de4601080dfa9259ebd4ddb3064",
+    "semantic_hash": ""
+  },
+  "cli.txt": {
+    "mtime": 1794241827.0326128,
+    "ast_hash": "fa7c5b9e1c67a98beadd02e6b10aaec1",
+    "semantic_hash": ""
+  },
+  "notes.txt": {
+    "mtime": 1794239269.1526606,
+    "ast_hash": "5ff744f4fb79b56ffaacec941cbce652",
+    "semantic_hash": ""
+  }
+}

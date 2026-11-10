@@ -1,0 +1,101 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "DRAFT2.cpp",
+      "file_type": "code",
+      "source_file": "DRAFT2.cpp",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "draft2",
+      "community": 1,
+      "norm_label": "draft2.cpp"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "DRAFT2.cpp",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "draft2_main",
+      "community": 1,
+      "norm_label": "main()"
+    },
+    {
+      "label": "draft.cpp",
+      "file_type": "code",
+      "source_file": "draft.cpp",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "draft",
+      "community": 0,
+      "norm_label": "draft.cpp"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "draft.cpp",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "draft_main",
+      "community": 0,
+      "norm_label": "main()"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 2,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Documentation of Ticket System of Group",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_documentation_of_ticket_system_of_group",
+      "community": 2,
+      "norm_label": "documentation of ticket system of group"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DRAFT2.cpp",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "draft2",
+      "target": "draft2_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "draft.cpp",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "draft",
+      "target": "draft_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "readme_documentation_of_ticket_system_of_group",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "74ebd2058659152df38f20a0bdae4a83a678bec7"
+}
