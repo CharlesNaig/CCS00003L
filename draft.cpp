@@ -7,8 +7,11 @@ using namespace std;
 int main() {
     int totalTransactions = 0;
     int totalTicketsSold = 0;
-    double totalRevenue = 0.0;
     int currentID = 1000;
+    int catChoice, menuOption, showChoice, cAge, typeChoice, qty;
+    double discountRate = 0.0;
+    double totalRevenue = 0.0;
+    double price = 0.0;
     
     bool running = true;
 
@@ -25,7 +28,6 @@ int main() {
         cout << "Select Option: 1-3 / 0\n";
         cout << "Enter Choice: ";
         
-        int menuOption;
         cin >> menuOption;
 
         switch (menuOption) {
@@ -44,13 +46,12 @@ int main() {
                 cout << "[1] Concert\n[2] Movies\n[3] Theatre\n[4] Sport Venues\n[5] Attractions\n\n";
                 cout << "Enter Choice: ";
                 
-                int catChoice;
+                
                 cin >> catChoice;
 
                 string category = "";
                 string show = "";
-                double price = 0.0;
-                int showChoice;
+                
 
                 switch (catChoice) {
                     case 1:
@@ -154,18 +155,16 @@ int main() {
                 cout << "Enter Customer Name: ";
                 getline(cin >> ws, cName);
                 
-                int cAge;
+
                 cout << "Enter Age: ";
                 cin >> cAge;
 
                 cout << "\nAre you a student, senior citizen, or PWD? (Enter the corresponding number)?:\n";
                 cout << "[1] Student\n[2] Senior Citizen\n[3] PWD\n[4] None\n\n";
                 cout << "Enter Choice: ";
-                int typeChoice;
                 cin >> typeChoice;
 
                 string cType = "None";
-                double discountRate = 0.0;
                 string discountName = "0%";
 
                 switch (typeChoice) {
@@ -176,7 +175,6 @@ int main() {
                     default: cType = "None"; discountRate = 0.0; discountName = "0%"; break;
                 }
 
-                int qty;
                 cout << "\nEnter Number of Tickets: ";
                 cin >> qty;
 
