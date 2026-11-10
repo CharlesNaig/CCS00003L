@@ -20,7 +20,7 @@
 ### Team collaboration
 
 ![Group video call with the C++ editor and a Git diff shared on screen](assets/progress/team-coding-call-01.png)
-
+g
 *Figure 1. The group on a video call with the TicketMachine code and Git changes on screen.*
 
 ![Another view of the group coding call and shared development screen](assets/progress/team-coding-call-02.png)
