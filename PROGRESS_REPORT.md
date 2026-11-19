@@ -45,3 +45,7 @@ g
 - [ ] Run the final CLI and capture screenshots for the paper.
 - [ ] Add the final commented source listing and defense date to the paper.
 - [ ] Check that the paper, flowchart, and README match the submitted build.
+
+## November 19, 2026
+
+- Added automatic clearing before opening each menu and before showing the booking computation and receipt. The receipt stays visible until Back is selected. Redirected output remains plain text.

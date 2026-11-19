@@ -19,28 +19,31 @@ using namespace std;
 class TerminalStyle {
 public:
     TerminalStyle() {
-        if (getenv("NO_COLOR") != nullptr) {
-            return;
-        }
-
 #ifdef _WIN32
         output = GetStdHandle(STD_OUTPUT_HANDLE);
-        enabled = GetConsoleMode(output, &originalMode)
+        terminalControl = GetConsoleMode(output, &originalMode)
             && SetConsoleMode(output, originalMode | ENABLE_PROCESSED_OUTPUT
                                        | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 #else
         const char* terminal = getenv("TERM");
-        enabled = isatty(STDOUT_FILENO) && terminal != nullptr && string(terminal) != "dumb";
+        terminalControl = isatty(STDOUT_FILENO) && terminal != nullptr && string(terminal) != "dumb";
 #endif
+        enabled = terminalControl && getenv("NO_COLOR") == nullptr;
     }
 
     ~TerminalStyle() {
 #ifdef _WIN32
-        if (enabled) {
+        if (terminalControl) {
             cout.flush();
             SetConsoleMode(output, originalMode);
         }
 #endif
+    }
+
+    void clearScreen() const {
+        if (terminalControl) {
+            cout << "\x1b[2J\x1b[H" << flush;
+        }
     }
 
     void heading(const string& title) const {
@@ -70,6 +73,7 @@ private:
     const char* color(const char* sequence) const { return enabled ? sequence : ""; }
 
     bool enabled = false;
+    bool terminalControl = false;
 #ifdef _WIN32
     HANDLE output = INVALID_HANDLE_VALUE;
     DWORD originalMode = 0;
@@ -156,6 +160,7 @@ int main() {
     cout << fixed << setprecision(2);
 
     while (true) {
+        style.clearScreen();
         if (screen == Screen::MainMenu) {
             style.heading("TICKETMACHINE CLI");
             cout << "  Ticket Kiosk Simulator\n\n";
@@ -279,6 +284,7 @@ int main() {
             double vat = total * 0.12;
             string bID = "TM" + to_string(currentID);
 
+            style.clearScreen();
             style.heading("TICKET COMPUTATION");
             cout << "Selected Show: " << show << "\n";
             cout << "Ticket Type: " << category << "\n";
