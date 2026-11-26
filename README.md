@@ -18,7 +18,13 @@ Both C++ drafts define their own `main()`. Build one file at a time. Use `DRAFT2
 
 Each menu opens on a cleared terminal. The ticket computation and receipt stay together until you enter 0 to return to the main menu. Invalid input remains visible while you retry the current prompt.
 
-The CLI uses blue section headers, teal option numbers, amber input errors, and green confirmations on supported terminals. Redirected output stays plain text. Set NO_COLOR=1 to turn colors off.
+Colors are defined in [colors.h](colors.h). The main program includes that header and uses readable names such as BLUE for headings, CYAN for option numbers, GREEN for confirmation, YELLOW for errors, and RESET to return to normal text.
+
+```cpp
+cout << GREEN << "CONFIRMED" << RESET;
+```
+
+Keep colors.h beside ticket-machine.cpp when building. Terminal setup and automatic clearing are handled in the header. Redirected output stays plain text, and NO_COLOR=1 disables the colors.
 
 ## Main menu
 

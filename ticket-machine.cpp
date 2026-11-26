@@ -3,85 +3,12 @@
 #include <iomanip>
 #include <limits>
 #include <sstream>
-#include <cstdlib>
-
-#ifdef _WIN32
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
+#include "colors.h"
 
 using namespace std;
 
-class TerminalStyle {
-public:
-    TerminalStyle() {
-#ifdef _WIN32
-        output = GetStdHandle(STD_OUTPUT_HANDLE);
-        terminalControl = GetConsoleMode(output, &originalMode)
-            && SetConsoleMode(output, originalMode | ENABLE_PROCESSED_OUTPUT
-                                       | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-#else
-        const char* terminal = getenv("TERM");
-        terminalControl = isatty(STDOUT_FILENO) && terminal != nullptr && string(terminal) != "dumb";
-#endif
-        enabled = terminalControl && getenv("NO_COLOR") == nullptr;
-    }
-
-    ~TerminalStyle() {
-#ifdef _WIN32
-        if (terminalControl) {
-            cout.flush();
-            SetConsoleMode(output, originalMode);
-        }
-#endif
-    }
-
-    void clearScreen() const {
-        if (terminalControl) {
-            cout << "\x1b[2J\x1b[H" << flush;
-        }
-    }
-
-    void heading(const string& title) const {
-        cout << '\n' << color("\x1b[1;38;2;243;248;255;48;2;22;54;94m");
-        if (enabled) {
-            cout << left << setw(46);
-        }
-        cout << ("  " + title) << reset() << "\n\n";
-    }
-
-    void optionNumber(int number) const {
-        cout << color("\x1b[1;38;2;14;60;71;48;2;205;239;247m")
-             << '[' << number << ']' << reset() << ' ';
-    }
-
-    void option(int number, const string& label) const {
-        optionNumber(number);
-        cout << label << '\n';
-    }
-
-    const char* error() const { return color("\x1b[1;38;2;110;57;16;48;2;255;241;204m"); }
-    const char* confirmed() const { return color("\x1b[1;38;2;13;66;43;48;2;209;250;229m"); }
-    const char* emphasis() const { return color("\x1b[1m"); }
-    const char* reset() const { return color("\x1b[0m"); }
-
-private:
-    const char* color(const char* sequence) const { return enabled ? sequence : ""; }
-
-    bool enabled = false;
-    bool terminalControl = false;
-#ifdef _WIN32
-    HANDLE output = INVALID_HANDLE_VALUE;
-    DWORD originalMode = 0;
-#endif
-};
-
 // Read one whole number per prompt. -1 signals end of input.
-int readNumber(const TerminalStyle& style, const char* prompt, int minimum,
+int readNumber(const char* prompt, int minimum,
                int maximum = numeric_limits<int>::max()) {
     string line;
     while (true) {
@@ -98,13 +25,13 @@ int readNumber(const TerminalStyle& style, const char* prompt, int minimum,
         }
 
         if (minimum == maximum) {
-            cout << style.error() << "Invalid choice." << style.reset()
+            cout << YELLOW << "Invalid choice." << RESET
                  << " Enter " << minimum << " to go back.\n";
         } else if (maximum == numeric_limits<int>::max()) {
-            cout << style.error() << "Invalid input." << style.reset()
+            cout << YELLOW << "Invalid input." << RESET
                  << " Enter a whole number of at least " << minimum << ".\n";
         } else {
-            cout << style.error() << "Invalid choice." << style.reset()
+            cout << YELLOW << "Invalid choice." << RESET
                  << " Enter a whole number from " << minimum << " to " << maximum << ".\n";
         }
     }
@@ -170,7 +97,7 @@ int main() {
             style.option(0, "Exit");
             cout << '\n';
 
-            int menuOption = readNumber(style, "Enter Choice: ", 0, 3);
+            int menuOption = readNumber("Enter Choice: ", 0, 3);
             if (menuOption == -1) {
                 break;
             }
@@ -193,7 +120,7 @@ int main() {
             style.option(0, "Back to Main Menu");
             cout << '\n';
 
-            int catChoice = readNumber(style, "Select Ticket Category: ", 0, CATEGORY_COUNT);
+            int catChoice = readNumber("Select Ticket Category: ", 0, CATEGORY_COUNT);
             if (catChoice == -1) {
                 break;
             }
@@ -217,8 +144,8 @@ int main() {
             cout << '\n';
 
             int showChoice = booking
-                ? readNumber(style, "Select Show / Event: ", 0, SHOW_COUNT)
-                : readNumber(style, "Enter Choice: ", 0, 0);
+                ? readNumber("Select Show / Event: ", 0, SHOW_COUNT)
+                : readNumber("Enter Choice: ", 0, 0);
             if (showChoice == -1) {
                 break;
             }
@@ -246,7 +173,7 @@ int main() {
                 continue;
             }
 
-            int cAge = readNumber(style, "Enter Age: ", 0);
+            int cAge = readNumber("Enter Age: ", 0);
             if (cAge == -1) {
                 break;
             }
@@ -258,7 +185,7 @@ int main() {
             style.option(0, "Back to Event List");
             cout << '\n';
 
-            int typeChoice = readNumber(style, "Enter Choice: ", 0, CUSTOMER_TYPE_COUNT);
+            int typeChoice = readNumber("Enter Choice: ", 0, CUSTOMER_TYPE_COUNT);
             if (typeChoice == -1) {
                 break;
             }
@@ -272,7 +199,7 @@ int main() {
             double discountRate = discountRates[typeIndex];
             string discountName = discountNames[typeIndex];
 
-            int qty = readNumber(style, "\nEnter Number of Tickets: ", 1);
+            int qty = readNumber("\nEnter Number of Tickets: ", 1);
             if (qty == -1) {
                 break;
             }
@@ -294,7 +221,7 @@ int main() {
             cout << "Discount: " << discountName << "\n";
             cout << "Discount Amount: PHP " << discAmt << "\n";
             cout << "Vat Amount: PHP " << vat << "\n\n";
-            cout << style.emphasis() << "TOTAL AMOUNT: PHP " << total << style.reset() << '\n';
+            cout << BOLD << "TOTAL AMOUNT: PHP " << total << RESET << '\n';
 
             style.heading("PURCHASE RECEIPT");
             cout << "Booking ID: " << bID << "\n";
@@ -309,8 +236,8 @@ int main() {
             cout << "Vat Amount: PHP " << vat << "\n";
             cout << "Discount Amount: PHP " << discAmt << "\n";
             cout << "----------------------------------------------\n";
-            cout << style.emphasis() << "Total Amount: PHP " << total << style.reset() << "\n\n";
-            cout << "Booking Status: " << style.confirmed() << "CONFIRMED" << style.reset() << "\n\n";
+            cout << BOLD << "Total Amount: PHP " << total << RESET << "\n\n";
+            cout << "Booking Status: " << GREEN << "CONFIRMED" << RESET << "\n\n";
             cout << "Thank you for using Ticket Machine!\n";
             cout << "----------------------------------------------\n";
 
@@ -321,7 +248,7 @@ int main() {
 
             cout << '\n';
             style.option(0, "Back to Main Menu");
-            if (readNumber(style, "Enter Choice: ", 0, 0) == -1) {
+            if (readNumber("Enter Choice: ", 0, 0) == -1) {
                 break;
             }
             screen = Screen::MainMenu;
@@ -329,11 +256,11 @@ int main() {
             style.heading("DAILY SALES REPORT");
             cout << "Total Transactions : " << totalTransactions << "\n";
             cout << "Total Tickets Sold : " << totalTicketsSold << "\n";
-            cout << style.emphasis() << "Total Revenue      : PHP " << totalRevenue << style.reset() << '\n';
+            cout << BOLD << "Total Revenue      : PHP " << totalRevenue << RESET << '\n';
             cout << "----------------------------------------------\n";
             cout << '\n';
             style.option(0, "Back to Main Menu");
-            if (readNumber(style, "Enter Choice: ", 0, 0) == -1) {
+            if (readNumber("Enter Choice: ", 0, 0) == -1) {
                 break;
             }
             screen = Screen::MainMenu;
