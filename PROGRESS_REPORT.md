@@ -51,3 +51,25 @@ g
 - Added automatic clearing before opening each menu and before showing the booking computation and receipt. The receipt stays visible until Back is selected. Redirected output remains plain text.
 - Added CLI colors using the new colors.h header and simple names such as GREEN and RESET in ticket-machine.cpp. Moved terminal setup out of the main source and rebuilt ticket-machine.exe. All 14 workflow checks passed, and a Windows console check verified colors, reset, NO_COLOR, and console-mode restoration.
 - Restored the original highlight colors and 46-character heading bars after the group preferred the earlier appearance. Simple color names remain in the main source. Rebuilt the executable, matched the original palette exactly, and passed the workflow and Windows console checks.
+- Added detailed explanatory comments to ticket-machine.cpp and colors.h covering functions, arrays, menu navigation, input validation, booking calculations, sales totals, and terminal colors. Verified that the preprocessed code is identical and the compiler syntax check passes without warnings.
+
+## November 26, 2026 video recording completed
+
+The group successfully completed the project video recording on November 26, 2026. The final MP4 is CSS0003L-Final Project.mp4 and runs for approximately 9 minutes and 34 seconds.
+
+The group members are
+
+- Marcelo, Charles Giann L.
+- Pacalna, Zairyll Mikko L.
+- Palaje, Adrian Paul B.
+- Pascua, Lawrence Albert S.
+
+![Group members in the Teams call after recording](assets/progress/recording-completed-2026-11-26-01.png)
+
+*Figure 4. The group after the recording, with the Teams chat showing the saved meeting recording.*
+
+![Group members together during the recording session](assets/progress/recording-completed-2026-11-26-02.png)
+
+*Figure 5. The four group members in the final project recording session.*
+
+The submission folder is [Marcelo, Pacalna, Palaje, Pascua](https://drive.google.com/drive/folders/1LZM5MMHyjqTYk4x5sWIM5Y4ZwxQ2JVTx). Its required contents are the demonstration video and the project paper. Source code and the progress report are supporting materials.

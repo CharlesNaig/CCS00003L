@@ -4,17 +4,17 @@ CCS00003L final project. TicketMachine is a C++ console program for browsing a s
 
 ## Build and run
 
-**VS Code on Windows.** Install the Microsoft C/C++ extension and open the project folder. The included [build task](.vscode/tasks.json) uses MSYS2 UCRT64 GCC at `C:\msys64\ucrt64\bin\g++.exe`. Open `DRAFT2.cpp` and press **Ctrl+F5** to build and run it in the integrated terminal. **F5** uses the [debug configuration](.vscode/launch.json), which expects GDB in the same UCRT64 directory. Update those paths if MSYS2 is installed elsewhere.
+**VS Code on Windows.** Install the Microsoft C/C++ extension and open the project folder. The included [build task](.vscode/tasks.json) uses MSYS2 UCRT64 GCC at `C:\msys64\ucrt64\bin\g++.exe`. Open `ticket-machine.cpp` and press **Ctrl+F5** to build and run it in the integrated terminal. **F5** uses the [debug configuration](.vscode/launch.json), which expects GDB in the same UCRT64 directory. Update those paths if MSYS2 is installed elsewhere.
 
 **PowerShell.** From the project folder, with GCC installed at the default path:
 
 ```powershell
 $env:PATH = "C:\msys64\ucrt64\bin;$env:PATH"
-g++ -std=c++17 -Wall -Wextra DRAFT2.cpp -o ticketmachine.exe
-.\ticketmachine.exe
+g++ -std=c++17 -Wall -Wextra ticket-machine.cpp -o ticket-machine.exe
+.\ticket-machine.exe
 ```
 
-Both C++ drafts define their own `main()`. Build one file at a time. Use `DRAFT2.cpp` to follow the walkthrough below.
+Both C++ drafts define their own `main()`. Build one file at a time. Use `ticket-machine.cpp` to follow the walkthrough below.
 
 Each menu opens on a cleared terminal. The ticket computation and receipt stay together until you enter 0 to return to the main menu. Invalid input remains visible while you retry the current prompt.
 
@@ -40,9 +40,9 @@ Inside a menu, **0** goes back. View Categories lets you open an event list with
 ## Source code guide
 
 - [`draft.cpp`](draft.cpp) is the first working version. Its `main()` uses nested `switch` statements for the menus and stores event names and prices in the corresponding branches.
-- [`DRAFT2.cpp`](DRAFT2.cpp) is the array-based draft used in this guide. Its `main()` organizes the program into the following blocks.
+- [`ticket-machine.cpp`](ticket-machine.cpp) is the array-based draft used in this guide. Its `main()` organizes the program into the following blocks.
 
-| Block | How it works in `DRAFT2.cpp` |
+| Block | How it works in `ticket-machine.cpp` |
 | --- | --- |
 | Catalog and discounts | `categories` contains the category labels. The two-dimensional `shows` and `prices` arrays share the same row and column positions. `customerTypes`, `discountRates`, and `discountNames` use matching indexes for student (10%), senior citizen (15%), PWD (10%), and regular (0%) bookings. |
 | Main menu | A `while` loop displays the active `Screen`. The menu branches update that screen when the user selects an action or goes back. |
