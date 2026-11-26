@@ -50,3 +50,4 @@ g
 
 - Added automatic clearing before opening each menu and before showing the booking computation and receipt. The receipt stays visible until Back is selected. Redirected output remains plain text.
 - Added CLI colors using the new colors.h header and simple names such as GREEN and RESET in ticket-machine.cpp. Moved terminal setup out of the main source and rebuilt ticket-machine.exe. All 14 workflow checks passed, and a Windows console check verified colors, reset, NO_COLOR, and console-mode restoration.
+- Restored the original highlight colors and 46-character heading bars after the group preferred the earlier appearance. Simple color names remain in the main source. Rebuilt the executable, matched the original palette exactly, and passed the workflow and Windows console checks.

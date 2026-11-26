@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdlib>
+#include <iomanip>
 #include <iostream>
 #include <string>
 
@@ -35,10 +36,10 @@ public:
             && std::string(terminal) != "dumb";
 #endif
         const bool useColors = terminalControl && std::getenv("NO_COLOR") == nullptr;
-        BLUE = useColors ? "\x1b[97;44m" : "";
-        CYAN = useColors ? "\x1b[30;106m" : "";
-        GREEN = useColors ? "\x1b[30;102m" : "";
-        YELLOW = useColors ? "\x1b[30;103m" : "";
+        BLUE = useColors ? "\x1b[1;38;2;243;248;255;48;2;22;54;94m" : "";
+        CYAN = useColors ? "\x1b[1;38;2;14;60;71;48;2;205;239;247m" : "";
+        GREEN = useColors ? "\x1b[1;38;2;13;66;43;48;2;209;250;229m" : "";
+        YELLOW = useColors ? "\x1b[1;38;2;110;57;16;48;2;255;241;204m" : "";
         BOLD = useColors ? "\x1b[1m" : "";
         RESET = useColors ? "\x1b[0m" : "";
     }
@@ -59,7 +60,11 @@ public:
     }
 
     void heading(const std::string& title) const {
-        std::cout << "\n" << BLUE << "  " << title << RESET << "\n\n";
+        std::cout << '\n' << BLUE;
+        if (BLUE[0] != '\0') {
+            std::cout << std::left << std::setw(46);
+        }
+        std::cout << ("  " + title) << RESET << "\n\n";
     }
 
     void optionNumber(int number) const {

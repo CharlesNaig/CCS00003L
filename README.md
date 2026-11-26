@@ -18,7 +18,7 @@ Both C++ drafts define their own `main()`. Build one file at a time. Use `DRAFT2
 
 Each menu opens on a cleared terminal. The ticket computation and receipt stay together until you enter 0 to return to the main menu. Invalid input remains visible while you retry the current prompt.
 
-Colors are defined in [colors.h](colors.h). The main program includes that header and uses readable names such as BLUE for headings, CYAN for option numbers, GREEN for confirmation, YELLOW for errors, and RESET to return to normal text.
+The original highlight palette and full-width heading bars are restored. Colors are defined in [colors.h](colors.h). The main program includes that header and uses readable names such as BLUE for headings, CYAN for option numbers, GREEN for confirmation, YELLOW for errors, and RESET to return to normal text.
 
 ```cpp
 cout << GREEN << "CONFIRMED" << RESET;
